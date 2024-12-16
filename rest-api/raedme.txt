@@ -1,0 +1,138 @@
+
+# REST API Service README
+
+## Overview
+This project implements a REST API service for managing hotel reservations. It integrates with a SOAP service to verify room availability before creating reservations. The API supports creating, viewing, and canceling reservations through both web and API interfaces.
+
+## Features
+- Create reservations with room availability checks.
+- Retrieve reservation details by ID.
+- Cancel reservations by ID.
+- Integration with a SOAP service for room availability verification.
+
+## Requirements
+- Python 3.x
+- Flask
+- SQLite
+- Requests
+
+## Setup
+1. Clone the repository.
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv env
+   source env/bin/activate  # On Windows: .\env\Scripts\activate
+   ```
+3. Install dependencies:
+   ```bash
+   pip install flask requests
+   ```
+4. Initialize the SQLite database:
+   ```bash
+   python setup_database.py
+   ```
+
+## Endpoints
+
+### 1. Create Reservation
+- **URL:** `/create`
+- **Method:** POST
+- **Request Format:** Form Data
+
+#### Example Request
+```bash
+POST /create HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+reservation_id=123&customer_name=John+Doe&start_date=2024-12-20&end_date=2024-12-25&room_type=double
+```
+
+#### Example Response
+- Displays a confirmation page with the reservation details, including `reservation_id` and assigned `room_number`.
+
+### 2. View Reservation
+- **URL:** `/reservations`
+- **Method:** GET
+- **Request Format:** Query Parameter
+
+#### Example Request
+```bash
+GET /reservations?reservation_id=123 HTTP/1.1
+```
+
+#### Example Response
+- Displays reservation details if the reservation exists or shows an error message if not found.
+
+### 3. Cancel Reservation
+- **URL:** `/reservations/cancel`
+- **Method:** POST
+- **Request Format:** Form Data
+
+#### Example Request
+```bash
+POST /reservations/cancel HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+reservation_id=123
+```
+
+#### Example Response
+- Displays a success message if the reservation was canceled, or an error message if the reservation was not found.
+
+---
+
+### API-Only Endpoints
+
+#### 4. Get Reservation (API)
+- **URL:** `/reservations`
+- **Method:** GET
+- **Request Format:** Query Parameter
+
+#### Example Request
+```bash
+GET /reservations?reservation_id=123 HTTP/1.1
+```
+
+#### Example Response
+```json
+{
+    "reservation_id": 123,
+    "room_number": 10,
+    "customer_name": "John Doe",
+    "start_date": "2024-12-20",
+    "end_date": "2024-12-25",
+    "status": "confirmed"
+}
+```
+
+#### 5. Cancel Reservation (API)
+- **URL:** `/reservations/cancel`
+- **Method:** POST
+- **Request Format:** JSON
+
+#### Example Request
+```json
+{
+    "reservation_id": 123
+}
+```
+
+#### Example Response
+```json
+{
+    "message": "Reservation canceled successfully"
+}
+```
+
+## SOAP Integration
+The service integrates with a SOAP endpoint to check room availability before creating reservations. The SOAP endpoint URL is configured in the `create_reservation_ui` function.
+
+## Run the Server
+To start the REST API service:
+```bash
+python api.py
+```
+The server will be available at `http://127.0.0.1:8001`.
+
+## Testing
+Use Postman or any other API testing tool to test the API endpoints. You can also use the provided web interface for creating, viewing, and canceling reservations.
