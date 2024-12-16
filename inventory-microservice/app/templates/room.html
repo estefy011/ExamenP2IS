@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Habitación</title>
+</head>
+<body>
+    <h1>Detalles de la Habitación</h1>
+    {% if room %}
+        <p>ID: {{ room.room_id }}</p>
+        <p>Tipo: {{ room.room_type }}</p>
+        <p>Estado: {{ room.status }}</p>
+    {% else %}
+        <p>No se encontró la habitación.</p>
+    {% endif %}
+    <a href="/">Volver al Inicio</a>
+</body>
+</html>

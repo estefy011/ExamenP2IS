@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Reserva</title>
+</head>
+<body>
+    <h1>Detalles de la Reserva</h1>
+    {% if reservation %}
+        <p>ID de la Reserva: {{ reservation.reservation_id }}</p>
+        <p>Número de Habitación: {{ reservation.room_number }}</p>
+        <p>Cliente: {{ reservation.customer_name }}</p>
+        <p>Fecha de Inicio: {{ reservation.start_date }}</p>
+        <p>Fecha de Fin: {{ reservation.end_date }}</p>
+        <p>Estado: {{ reservation.status }}</p>
+    {% else %}
+        <p>No se encontró la reserva.</p>
+    {% endif %}
+    <a href="/">Volver al Inicio</a>
+</body>
+</html>

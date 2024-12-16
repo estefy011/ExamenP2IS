@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Reserva</title>
+</head>
+<body>
+    <h1>Detalle de la Reserva</h1>
+    <ul>
+        <li>ID: {{ reservation['reservation_id'] }}</li>
+        <li>Habitación: {{ reservation['room_number'] }}</li>
+        <li>Cliente: {{ reservation['customer_name'] }}</li>
+        <li>Inicio: {{ reservation['start_date'] }}</li>
+        <li>Fin: {{ reservation['end_date'] }}</li>
+        <li>Estado: {{ reservation['status'] }}</li>
+    </ul>
+    <a href="/">Volver al inicio</a>
+</body>
+</html>

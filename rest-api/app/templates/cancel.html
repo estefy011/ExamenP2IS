@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancelar Reserva</title>
+</head>
+<body>
+    <h1>Cancelar Reserva</h1>
+    {% if success %}
+        <p>La reserva fue cancelada exitosamente.</p>
+    {% else %}
+        <p>No se encontró la reserva.</p>
+    {% endif %}
+    <a href="/">Volver al Inicio</a>
+</body>
+</html>

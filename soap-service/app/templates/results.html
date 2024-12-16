@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+</head>
+<body>
+    <h1>Resultados de la Consulta</h1>
+    {% if rooms %}
+        <p>Habitaciones disponibles:</p>
+        <ul>
+            {% for room in rooms %}
+                <li>Habitación ID: {{ room }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay habitaciones disponibles para las fechas seleccionadas.</p>
+    {% endif %}
+    <a href="/">Volver al inicio</a>
+</body>
+</html>

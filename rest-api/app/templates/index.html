@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Reservas</title>
+</head>
+<body>
+    <h1>Crear una Nueva Reserva</h1>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form action="/create" method="post">
+        <label for="reservation_id">Código de Reservación:</label>
+        <input type="number" id="reservation_id" name="reservation_id" required><br><br>
+
+        <label for="customer_name">Nombre del Cliente:</label>
+        <input type="text" id="customer_name" name="customer_name" required><br><br>
+    
+        <label for="start_date">Fecha de Inicio:</label>
+        <input type="date" id="start_date" name="start_date" required><br><br>
+    
+        <label for="end_date">Fecha de Fin:</label>
+        <input type="date" id="end_date" name="end_date" required><br><br>
+    
+        <label for="room_type">Tipo de Habitación:</label>
+        <select id="room_type" name="room_type" required>
+            <option value="single">Single</option>
+            <option value="double">Double</option>
+            <option value="suite">Suite</option>
+        </select><br><br>
+    
+        <button type="submit">Crear Reserva</button>
+    </form>
+    
+    <hr>
+    <h2>Consultar Reserva</h2>
+    <form action="/reservations" method="get">
+        <label for="reservation_id">ID de la Reserva:</label>
+        <input type="number" id="reservation_id" name="reservation_id" required>
+        <button type="submit">Consultar</button>
+    </form>
+    <hr>
+    <h2>Cancelar Reserva</h2>
+    <form action="/reservations/cancel" method="post">
+        <label for="reservation_id">ID de la Reserva:</label>
+        <input type="number" id="reservation_id" name="reservation_id" required>
+        <button type="submit">Cancelar Reserva</button>
+    </form>
+    
+</body>
+</html>
